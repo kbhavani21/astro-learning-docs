@@ -7,9 +7,11 @@ import sitemap from "@astrojs/sitemap";
 
 import react from "@astrojs/react";
 
+import vercel from "@astrojs/vercel/serverless";
+
 // https://astro.build/config
 export default defineConfig({
-	site: "http://localhost:3000",
+  site: "http://localhost:3000",
   integrations: [starlight({
     title: 'My Docs',
     social: {
@@ -29,73 +31,58 @@ export default defineConfig({
         label: 'Deploy Your Site',
         link: '/start/deploy/'
       }]
-    },
-	{
-		label: 'Core Concept',
-		items: [
-		// Each item here is one entry in the navigation menu.
-		{
-		  label: 'Why Astro',
-		  link: '/coreconcept/astro/'
-		}, 
-	]
-	  },
-	
-	 {
+    }, {
+      label: 'Core Concept',
+      items: [
+      // Each item here is one entry in the navigation menu.
+      {
+        label: 'Why Astro',
+        link: '/coreconcept/astro/'
+      }]
+    }, {
       label: 'Guides',
       items: [
       // Each item here is one entry in the navigation menu.
       {
         label: 'Pages',
         link: '/guides/example/'
-      },
-	  {
-		label : 'Authoring Content in Markdown',
-		link :'/guides/markdown/'
-	  },
-	  {
-	  label : 'Components',
-	  link :'/guides/component/'
-	  },
-	  {
-		label :'CSS & Styling',
-		link :'/guides/styling/'
-	  },
-	  {
-		label: 'Customizing Starlight',
-		link :'/guides/customizing/'
-	  },
-	  {
-		label :'Internationalization (i18n)',
-		link :'/guides/internationalization/'
-	  },
-	  {
-		label :'Overriding Components',
-		link:'/guides/overridingcomponents/'
-	  },
-	  {
-		label :'Project Structure',
-		link:'/guides/projectstructure/'
-	  },
-	  {
-		label :'Sidebar Navigation',
-		link :'/guides/sidebarnavigation/'
-	  },
-	  {
-		label :'Site Search',
-		link : '/guides/sitesearch/'
-	  }
-
-	  
-	]
+      }, {
+        label: 'Authoring Content in Markdown',
+        link: '/guides/markdown/'
+      }, {
+        label: 'Components',
+        link: '/guides/component/'
+      }, {
+        label: 'CSS & Styling',
+        link: '/guides/styling/'
+      }, {
+        label: 'Customizing Starlight',
+        link: '/guides/customizing/'
+      }, {
+        label: 'Internationalization (i18n)',
+        link: '/guides/internationalization/'
+      }, {
+        label: 'Overriding Components',
+        link: '/guides/overridingcomponents/'
+      }, {
+        label: 'Project Structure',
+        link: '/guides/projectstructure/'
+      }, {
+        label: 'Sidebar Navigation',
+        link: '/guides/sidebarnavigation/'
+      }, {
+        label: 'Site Search',
+        link: '/guides/sitesearch/'
+      }]
     }, {
       label: 'Reference',
       autogenerate: {
         directory: 'reference'
       }
     }]
-  }), tailwind(), mdx(), sitemap()
-  , react()],
-  output: "server",
-//   adapter: vercel()
+  }), tailwind(), mdx(), sitemap(), react()],
+  output: "server"
+  //   adapter: vercel()
+  ,
+  adapter: vercel()
 });
